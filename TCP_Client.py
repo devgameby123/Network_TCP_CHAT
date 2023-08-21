@@ -18,10 +18,10 @@ nickname = input("กรุณาใส่ชื่อเล่น: ")
 def receive():
     while True:
         try:
-            message = client.recv(1024).decode('ascii')
+            message = client.recv(1024).decode('utf-8')
             # ถ้าข้อความที่ได้รับเป็น 'NICK' ให้ส่งชื่อเล่นของผู้ใช้งานไป
             if message == 'NICK':
-                client.send(nickname.encode('ascii'))
+                client.send(nickname.encode('utf-8'))
             else:
                 print(message)
 
@@ -36,7 +36,7 @@ def receive():
 def write():
     while True:
         message = f'{nickname}: {input("")}'
-        client.send(message.encode('ascii'))
+        client.send(message.encode('utf-8'))
 
 
 # เริ่มเธรดสำหรับรับข้อความ

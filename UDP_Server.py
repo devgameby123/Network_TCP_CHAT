@@ -29,8 +29,8 @@ def handle_client(client_socket, client_address):
 
 
 # การตั้งค่าของเซิร์ฟเวอร์
-HOST = "localhost"
-PORT = 12345
+HOST = "10.25.6.184"
+PORT = 54321
 
 # สร้าง socket สำหรับเซิร์ฟเวอร์โปรโตคอล UDP
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

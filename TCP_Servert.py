@@ -32,7 +32,7 @@ def handle(client):
             clients.remove(client)
             client.close()
             nickname = nicknames[index]
-            broadcast(f'{nickname} ออกจากแชท!'.encode('ascii'))
+            broadcast(f'{nickname} ออกจากแชท!'.encode('utf-8'))
             nicknames.remove(nickname)
             break
 
@@ -43,14 +43,14 @@ def receive():
         client, address = server.accept()
         print(f"เชื่อมต่อกับ {str(address)}")
 
-        client.send('NICK'.encode('ascii'))
-        nickname = client.recv(1024).decode('ascii')
+        client.send('NICK'.encode('utf-8'))
+        nickname = client.recv(1024).decode('utf-8')
         nicknames.append(nickname)
         clients.append(client)
 
         print(f'ชื่อเล่นของผู้ใช้งาน: {nickname}')
-        broadcast(f"{nickname} เข้าร่วมแชท".encode('ascii'))
-        client.send('เชื่อมต่อกับเซิร์ฟเวอร์แล้ว'.encode('ascii'))
+        broadcast(f"{nickname} เข้าร่วมแชท".encode('utf-8'))
+        client.send('เชื่อมต่อกับเซิร์ฟเวอร์แล้ว'.encode('utf-8'))
 
         thread = threading.Thread(target=handle, args=(client,))
         thread.start()

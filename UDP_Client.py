@@ -14,8 +14,8 @@ def receive_messages(client_socket):
 
 
 # การตั้งค่าเซิร์ฟเวอร์และพอร์ต
-HOST = "localhost"
-PORT = 12345
+HOST = "25.50.17.169"
+PORT = 54321
 
 # สร้าง socket สำหรับไคลเอ็นต์แบบ UDP
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
