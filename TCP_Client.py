@@ -2,8 +2,8 @@ import socket
 import threading
 
 # รับข้อมูล IP และ Port ของเซิร์ฟเวอร์ที่ต้องการเชื่อมต่อ
-ip_connect = input("กรุณาใส่ IP: ")
-port_connect = input("กรุณาใส่ Port: ")
+ip_connect = '147.185.221.17'
+port_connect = 2033
 
 # สร้าง socket สำหรับเชื่อมต่อเซิร์ฟเวอร์แบบ TCP
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

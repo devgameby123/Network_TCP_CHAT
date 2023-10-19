@@ -2,8 +2,8 @@ import threading
 import socket
 
 # กำหนดข้อมูลเซิร์ฟเวอร์
-host = '25.50.17.169'
-port = 54321
+host = '127.0.0.1'
+port = 54432
 
 # สร้าง socket สำหรับเซิร์ฟเวอร์แบบ TCP
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -26,18 +26,26 @@ def handle(client):
     while True:
         try:
             message = client.recv(1024)
+            if (message == 'exit'):
+                exitRoom()
+                broadcast()
+                break
             broadcast(message)
         except:
-            index = clients.index(client)
-            clients.remove(client)
-            client.close()
-            nickname = nicknames[index]
-            broadcast(f'{nickname} ออกจากแชท!'.encode('utf-8'))
-            nicknames.remove(nickname)
+            exitRoom()
             break
 
 
+def exitRoom(client):
+    index = clients.index(client)
+    clients.remove(client)
+    client.close()
+    nickname = nicknames[index]
+    broadcast(f'{nickname} ออกจากแชท!'.encode('utf-8'))
+    nicknames.remove(nickname)
 # ฟังก์ชันสำหรับรอรับการเชื่อมต่อจากผู้ใช้งาน
+
+
 def receive():
     while True:
         client, address = server.accept()

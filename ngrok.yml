@@ -1,0 +1,7 @@
+authtoken: 2U72UVIOjFYlO1Hwo5IujVPUQIu_7Sb2x3GmRUnnxGPWoUC2k
+version: 2
+
+tunnels:
+  bwibow:
+    proto: udp
+    addr: localhost
